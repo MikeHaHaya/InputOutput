@@ -9,6 +9,7 @@ public class FileIO {
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter("output.txt"));
             writer.write("Writing to a file");
+            writer.write("\nAnother one");
 
 
             writer.close();
