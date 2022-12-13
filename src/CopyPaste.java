@@ -4,22 +4,23 @@ public class CopyPaste {
 
     public static void main(String[] args) {
 
-        File inputFile = new File("C:\\Users\\danie\\Downloads\\Profile.pdf");
-        File outputFile = new File("C:\\Users\\danie\\Downloads\\Profile.pdf");
+        File sourcePath = new File("C:\\Users\\danie\\Downloads\\Profile.pdf");
+        File destPath = new File("C:\\Users\\danie\\OneDrive\\Desktop\\Profile.pdf");
 
-        FileInputStream fileInputStream = null;
-        FileOutputStream fileOutputStream = null;
+        try {
+            copyFileUsingStream(sourcePath, destPath);
+        } catch (IOException e) {}
 
     }
 
-    private static void copyFileUsingStream(File source, File dest) throws IOException {
+    private static void copyFileUsingStream(File sourcePath, File destPath) throws IOException {
 
         InputStream input = null;
         OutputStream output = null;
 
         try {
-            input = new FileInputStream(source);
-            output = new FileOutputStream(dest);
+            input = new FileInputStream(sourcePath);
+            output = new FileOutputStream(destPath);
 
             byte[] buffer = new byte[1024];
             int length;
@@ -29,7 +30,8 @@ public class CopyPaste {
             }
 
         } finally {
-
+            input.close();
+            output.close();
         }
 
     }
